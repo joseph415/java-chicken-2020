@@ -11,10 +11,14 @@ public class Table {
         bill = new Bill();
     }
 
-    public void insertMenu(String menuName) {
-        Objects.requireNonNull(menuName, "메뉴이름이 null 입니다");
+    public void insertMenu(String menuName, int quantity) {
+        Objects.requireNonNull(menuName, "메뉴 이름이 null 입니다");
 
-        bill.insert(menuName);
+        bill.insert(menuName, quantity);
+    }
+
+    public int menuQuantity(String menuName) {
+        return bill.menuQuantity(menuName);
     }
 
     public int getNumber() {

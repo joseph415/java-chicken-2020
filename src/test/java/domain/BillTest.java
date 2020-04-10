@@ -24,22 +24,21 @@ class BillTest {
     @ParameterizedTest
     @NullSource
     void insert_StringMenuName_plusMenuNumber(String menuName) {
-        assertThatThrownBy(() -> bill.insert(menuName)).isInstanceOf(NullPointerException.class)
+        assertThatThrownBy(() -> bill.insert(menuName, 1)).isInstanceOf(NullPointerException.class)
                 .hasMessage("메뉴 이름이 null 입니다");
     }
 
     @ParameterizedTest
     @NullSource
-    void insert_invalidStringMenuName_ExceptionThrown(Menu menuName) {
+    void insert_invalidStringMenuName_ExceptionThrown(String menuName) {
         assertThatThrownBy(() -> bill.menuQuantity(menuName)).isInstanceOf(NullPointerException.class)
                 .hasMessage("메뉴 이름이 null 입니다");
     }
 
     @Test
     void insert_StringMenuName_plusMenuNumber() {
-        bill.insert("후라이드");
-        Menu menu = MenuRepository.findMenuBy("후라이드");
+        bill.insert("후라이드", 1);
 
-        assertThat(bill.menuQuantity(menu)).isEqualTo(1);
+        assertThat(bill.menuQuantity("후라이드")).isEqualTo(1);
     }
 }
