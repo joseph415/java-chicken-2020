@@ -16,6 +16,13 @@ public class TableRepository {
         tables.add(new Table(8));
     }
 
+    public static Table findTableNumberBy(int tableNumber) {
+        return tables.stream()
+                .filter(table -> table.getNumber() == tableNumber)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("올바르지 않은 테이블 번호입니다"));
+    }
+
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }

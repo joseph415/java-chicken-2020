@@ -3,6 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
@@ -17,6 +18,16 @@ public class MenuRepository {
         menus.add(new Menu(21, "콜라", Category.BEVERAGE, 1_000));
         menus.add(new Menu(22, "사이다", Category.BEVERAGE, 1_000));
     }
+
+    public static Menu findMenuBy(String menuName) {
+        Objects.requireNonNull(menuName, "메뉴 이름이 null 입니다");
+
+        return menus.stream()
+                .filter(menu -> menu.getName().equals(menuName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 메뉴 이름입니다"));
+    }
+
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
