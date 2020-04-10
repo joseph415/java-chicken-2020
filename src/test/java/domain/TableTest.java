@@ -1,29 +1,26 @@
 package domain;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class TableTest {
-
-    @ParameterizedTest
-    @NullSource
-    void insertMenu_MenuNameIsNull_ExceptionThrown(String menuName) {
-        Table table = TableRepository.findTableNumberBy(1);
-        assertThatThrownBy(() -> table.insertMenu(menuName, 1)).isInstanceOf(NullPointerException.class)
-                .hasMessage("메뉴 이름이 null 입니다");
-    }
 
     @Test
     void insertMenu_MenuName_PlusMenu() {
         Table table = TableRepository.findTableNumberBy(1);
-        table.insertMenu("후라이드", 1);
+        table.insertMenu(1, 1);
 
+        assertThat(table.menuQuantity(1)).isEqualTo(1);
     }
 
     @Test
-    void testToString() {
+    void sumAllMenuPrice_void_ReturnsSumALLMenuPrice() {
+        Table table = TableRepository.findTableNumberBy(1);
+
+        table.insertMenu(1, 3);
+        table.insertMenu(3, 1);
+
+        assertThat(table.sumAllMenuPrice()).isEqualTo(64000);
     }
 }

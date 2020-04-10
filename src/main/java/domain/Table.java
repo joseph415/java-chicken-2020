@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Objects;
-
 public class Table {
     private final int number;
     private Bill bill;
@@ -11,14 +9,18 @@ public class Table {
         bill = new Bill();
     }
 
-    public void insertMenu(String menuName, int quantity) {
-        Objects.requireNonNull(menuName, "메뉴 이름이 null 입니다");
-
-        bill.insert(menuName, quantity);
+    public void insertMenu(int menuNumber, int quantity) {
+        bill.insert(menuNumber, quantity);
     }
 
-    public int menuQuantity(String menuName) {
-        return bill.menuQuantity(menuName);
+    public int sumAllMenuPrice() {
+        return bill.getBill().entrySet().stream()
+                .mapToInt(entry -> entry.getValue() * (entry.getKey().getPrice()))
+                .sum();
+    }
+
+    public int menuQuantity(int menuNumber) {
+        return bill.menuQuantity(menuNumber);
     }
 
     public int getNumber() {
