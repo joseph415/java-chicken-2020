@@ -37,4 +37,27 @@ class TableTest {
         table.insertMenu(1, 10);
         assertThat(table.sumDiscountPrice(PaymentMethod.MONEY)).isEqualTo(142_000);
     }
+
+    @Test
+    void sumPrice_totalPrice_returnPrice() {
+        table.insertMenu(1, 10);
+        assertThat(table.sumPrice()).isEqualTo(160_000);
+    }
+
+    @Test
+    void switchedHaveGuestState_isHaveGuestTrue_returnTrue() {
+        Table table = new Table(1);
+        table.switchedHaveGuestState();
+
+        assertThat(table.isHaveGuest()).isTrue();
+    }
+
+    @Test
+    void switchedHaveGuestState_isHaveGuestFalse_returnFalse() {
+        Table table = new Table(1);
+        table.switchedHaveGuestState();
+        table.switchedHaveGuestState();
+
+        assertThat(table.isHaveGuest()).isFalse();
+    }
 }

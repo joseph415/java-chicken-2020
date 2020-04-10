@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Arrays;
-
 public enum Category {
     CHICKEN("치킨"),
     BEVERAGE("음료");
@@ -10,17 +8,6 @@ public enum Category {
 
     Category(final String name) {
         this.name = name;
-    }
-
-    public static Category findCategoryBy(String category) {
-        return Arrays.stream(Category.values())
-                .filter(menu -> menu.getName().equals(category))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 메뉴 번호입니다"));
-    }
-
-    private String getName() {
-        return name;
     }
 
     @Override

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BillTest {
     private Bill bill;
@@ -38,5 +39,12 @@ class BillTest {
         bill.insert(3, 1);
 
         assertThat(bill.sumAllMenuPrice()).isEqualTo(64000);
+    }
+
+    @Test
+    void insert_invalidCount_Exception() {
+        assertThatThrownBy(() -> bill.insert(1, 100))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("최대 구매 수량은 99개 입니다");
     }
 }

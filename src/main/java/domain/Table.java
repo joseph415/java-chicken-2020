@@ -28,6 +28,7 @@ public class Table {
     public void switchedHaveGuestState() {
         if (this.isHaveGuest) {
             this.isHaveGuest = false;
+            return;
         }
         this.isHaveGuest = true;
     }

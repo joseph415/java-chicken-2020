@@ -20,7 +20,7 @@ public class Bill {
     }
 
     public void insert(int menuNumber, int quantity) {
-        if (menuQuantity(menuNumber) > PURCHASE_UPPER_BOUND) {
+        if (menuQuantity(menuNumber) + quantity > PURCHASE_UPPER_BOUND) {
             throw new IllegalArgumentException("최대 구매 수량은 99개 입니다");
         }
 
