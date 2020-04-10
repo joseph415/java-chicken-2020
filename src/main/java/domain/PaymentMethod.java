@@ -18,7 +18,7 @@ public enum PaymentMethod {
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 결제 방식 입니다"));
     }
 
-    public int getPaymentNumber() {
+    private int getPaymentNumber() {
         return paymentNumber;
     }
 

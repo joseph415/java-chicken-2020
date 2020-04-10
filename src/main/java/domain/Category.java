@@ -19,7 +19,7 @@ public enum Category {
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 메뉴 번호입니다"));
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 
