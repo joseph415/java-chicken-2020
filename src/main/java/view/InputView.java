@@ -20,5 +20,15 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public static int inputMainTodo() {
+        System.out.println("## 원하는 기능을 선택하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputPaymentMethod() {
+        System.out.println("## 신용 카드는 1번, 현금은 2번");
+        return scanner.nextInt();
+    }
+
 
 }

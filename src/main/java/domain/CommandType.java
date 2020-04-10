@@ -20,6 +20,10 @@ public enum CommandType {
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 명령입니다"));
     }
 
+    public boolean isEnd() {
+        return this.equals(END);
+    }
+
     private int getCommand() {
         return command;
     }

@@ -23,18 +23,18 @@ class TableTest {
     @Test
     void sumPrice_PaymentMethodIsCardAndChickQuantityMoreThanTen_returnDiscount() {
         table.insertMenu(1, 10);
-        assertThat(table.sumPrice(PaymentMethod.CARD)).isEqualTo(150_000);
+        assertThat(table.sumDiscountPrice(PaymentMethod.CARD)).isEqualTo(150_000);
     }
 
     @Test
     void sumPrice_PaymentMethodIsMoney_returnDiscount() {
         table.insertMenu(1, 1);
-        assertThat(table.sumPrice(PaymentMethod.MONEY)).isEqualTo(15200);
+        assertThat(table.sumDiscountPrice(PaymentMethod.MONEY)).isEqualTo(15200);
     }
 
     @Test
     void sumPrice_PaymentMethodIsMoneyAndChickQuantityMoreThanTen_returnDiscount() {
         table.insertMenu(1, 10);
-        assertThat(table.sumPrice(PaymentMethod.MONEY)).isEqualTo(142_000);
+        assertThat(table.sumDiscountPrice(PaymentMethod.MONEY)).isEqualTo(142_000);
     }
 }
