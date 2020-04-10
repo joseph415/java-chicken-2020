@@ -13,18 +13,16 @@ public class Table {
         bill.insert(menuNumber, quantity);
     }
 
-    public int sumAllMenuPrice() {
-        return bill.getBill().entrySet().stream()
-                .mapToInt(entry -> entry.getValue() * (entry.getKey().getPrice()))
-                .sum();
-    }
-
     public int menuQuantity(int menuNumber) {
         return bill.menuQuantity(menuNumber);
     }
 
     public int getNumber() {
         return number;
+    }
+
+    public double sumPrice(PaymentMethod paymentMethod) {
+        return Discount.discountPrice(bill, paymentMethod);
     }
 
     @Override

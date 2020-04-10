@@ -21,4 +21,8 @@ public enum PaymentMethod {
     public int getPaymentNumber() {
         return paymentNumber;
     }
+
+    public boolean isMoney() {
+        return this.equals(MONEY);
+    }
 }
